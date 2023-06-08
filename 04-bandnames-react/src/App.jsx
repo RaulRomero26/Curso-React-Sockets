@@ -44,7 +44,14 @@ function App() {
     console.log('votar app ',id);
     socket.emit('votar-banda',id);
   }
+  const borrar = ( id ) => {
+    console.log('borrar',id);
+    socket.emit('borrar-banda',id);
+  }
   
+  const cambiarNombre = (id,nombre) => {
+    socket.emit('cambiar-nombre-banda',{id,nombre})
+  }
 
   return (
     <> 
@@ -70,6 +77,8 @@ function App() {
           <BandList
             data={bands}
             votar={votar}
+            borrar={borrar}
+            cambiarNombre={cambiarNombre}
           />
         </div>
         <div className="col-4">
